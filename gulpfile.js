@@ -8,7 +8,7 @@ gulp.task('clean', function(){
 		.pipe(clean());
 });
 
-gulp.task('default', function(){
+gulp.task('build', function(){
 	return gulp.src('src/index.jsx')
 		.pipe(browserify({
 			transform: ['reactify'],
@@ -16,4 +16,10 @@ gulp.task('default', function(){
 		}))
 		.pipe(rename('app.js'))
 		.pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['build']);
+
+gulp.task('watch', function(){
+	return gulp.watch('src/*.jsx', ['build']);
 });
