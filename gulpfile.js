@@ -11,7 +11,8 @@ gulp.task('clean', function(){
 gulp.task('default', function(){
 	return gulp.src('src/index.jsx')
 		.pipe(browserify({
-			transform: ['reactify']
+			transform: ['reactify'],
+			extensions: ['.jsx']
 		}))
 		.pipe(rename('app.js'))
 		.pipe(gulp.dest('dist'));
